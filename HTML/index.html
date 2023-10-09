@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../CSS/style.css" />
+    <link rel="stylesheet" href="../CSS/headerstyle.css" />
+    <script src="../JS/index.js"></script>
+    <title>Color Picker</title>
+  </head>
+  <body>
+    <div class="container">
+      <section class="section upper-section">
+        <div class="section-header">
+          <h3 class="upper-section-header-title title">Display Color</h3>
+          <button id="suffle-btn" class="section-header-btn btn">
+            Random Color
+          </button>
+        </div>
+        <div class="divider"></div>
+        <div id="display-field" class="color-display-field"></div>
+      </section>
+
+      <section class="section bellow-section">
+        <div class="section-header">
+          <h3 class="bellow-section-header-title title">Change & Copy Color</h3>
+          <button id="copy-btn" class="section-header-btn btn">
+            Copy To Clipboard
+          </button>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="selected-mode">
+          <h4 class="selected-mode-title title">Select Copy Mode</h4>
+          <div class="checkbox-grp">
+            <input
+              id="hex-mode"
+              name="color-mode"
+              type="radio"
+              value="hex"
+              checked
+            />
+            <label for="hex">Hex</label>
+            <input id="rgb-mode" name="color-mode" type="radio" value="rgb" />
+            <label for="rgb">RGB</label>
+          </div>
+        </div>
+        <!-- Input Portion Start -->
+        <div class="input-grp">
+          <div class="hex-input-grp">
+            <h4 class="hex-input-label label">Hex</h4>
+            <div class="hash-input-box">
+              <div class="hash-icon">#</div>
+              <input
+                id="hex-input"
+                type="text"
+                class="hex-input"
+                placeholder="Enter Hex Code"
+                value="000000"
+              />
+            </div>
+          </div>
+
+          <div class="rgb-input-grp">
+            <h4 class="rgb-input-label label">RGB</h4>
+            <input id="rgb-input" type="text" class="rgb-input" disabled />
+          </div>
+        </div>
+        <!-- Input Portion End -->
+
+        <div class="slider-container">
+          <h4 class="slider-container-label title">Ajdust RGB Colors</h4>
+          <div class="slider-grp">
+            <!-- Red Slider -->
+            <div class="slider-div red-slider">
+              <div class="red-slider-title slider-title">
+                <p class="color-title red-title">Red</p>
+                <p id="red-color-code" class="color-code red-color-code">221</p>
+              </div>
+
+              <div class="slider">
+                <input id="red-range" class="range" type="range" max="255" />
+              </div>
+            </div>
+            <!-- Green Slider -->
+            <div class="slider-div green-slider">
+              <div class="green-slider-title slider-title">
+                <p class="color-title green-title">green</p>
+                <p id="green-color-code" class="color-code green-color-code">
+                  180
+                </p>
+              </div>
+
+              <div class="slider">
+                <input id="green-range" class="range" type="range" max="255" />
+              </div>
+            </div>
+            <!-- Blue Slider -->
+            <div class="slider-div blue-slider">
+              <div class="blue-slider-title slider-title">
+                <p class="color-title blue-title">blue</p>
+                <p id="blue-color-code" class="color-code blue-color-code">
+                  210
+                </p>
+              </div>
+
+              <div class="slider">
+                <input id="blue-range" class="range" type="range" max="255" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>

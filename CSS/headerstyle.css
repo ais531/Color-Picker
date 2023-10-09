@@ -1,0 +1,5 @@
+.section .section-header {
+  display: flex;
+  /* background-color: rgb(36, 58, 218); */
+  justify-content: space-between;
+}
