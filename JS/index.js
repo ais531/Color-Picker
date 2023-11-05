@@ -24,28 +24,30 @@ function main() {
   const redSlider = document.querySelector("#red-range");
   const greenSlider = document.querySelector("#green-range");
   const blueSlider = document.querySelector("#blue-range");
-  const nodes = document.getElementsByName("color-mode");
+  const modes = document.getElementsByName("color-mode");
   const copyBtn = document.querySelector("#copy-btn");
 
-  // console.log("node==>>", nodes);
+  // console.log("node==>>", modes);
 
   copyBtn.addEventListener("click", function () {
-    let colorMode = getModeValueFromRadios(nodes);
+    let colorMode = getModeValueFromRadios(modes);
 
     if (colorMode === null) {
       throw new Error("Invalid Radio Input");
     }
 
-    if (toastDiv != null) {
-      toastDiv.remove();
-      toastDiv = null;
-    }
+    setTimeout(() => {
+      if (toastDiv != null) {
+        toastDiv.remove();
+        toastDiv = null;
+      }
+    }, 5000);
     // Mode hex copy valided
     if (colorMode === "hex") {
       const hexColor = document.querySelector("#hex-input").value;
       if (hexColor && isValidHex(hexColor)) {
         navigator.clipboard.writeText(`#${hexColor}`);
-        showToastMessage(hexColor);
+        showToastMessage(`#${hexColor}`);
       } else alert("Invalid Hex Code");
     }
     // Mode rgb copy valided
@@ -103,8 +105,7 @@ function main() {
   );
 }
 
-// ----------******-----DOM related Function-------***********---------
-
+// ----------******-----DOM related Function Start-------***********---------
 /**
  * take Message which is hex or rgb color and make a toast message
  * @param {String} msg
@@ -114,7 +115,7 @@ function showToastMessage(msg) {
   toastDiv = document.createElement("div");
   toastDiv.className = "toast-message toast-message-slide-in";
   toastDiv.innerText = `${msg} Copied`;
-  toastDiv.style.backgroundColor = msg;
+  // toastDiv.style.backgroundColor = msg;
 
   toastDiv.addEventListener("click", function () {
     toastDiv.classList.remove("toast-message-slide-in");
@@ -129,15 +130,15 @@ function showToastMessage(msg) {
   document.body.appendChild(toastDiv);
 }
 /**
- * @param {Array} nodes
+ * @param {Array} modes
  * @returns {String | null}
  */
-function getModeValueFromRadios(nodes) {
+function getModeValueFromRadios(modes) {
   let checkedValue = null;
-  console.log("nodes==>", nodes);
-  for (let i = 0; i < nodes.length; i++) {
-    if (nodes[i].checked) {
-      checkedValue = nodes[i].value;
+  console.log("modes==>", modes);
+  for (let i = 0; i < modes.length; i++) {
+    if (modes[i].checked) {
+      checkedValue = modes[i].value;
     }
   }
   return checkedValue;
@@ -150,7 +151,9 @@ function getModeValueFromRadios(nodes) {
  */
 function updateColorCodeToDom(color) {
   const hex = generateHex(color);
+  console.log("HEX===>>>", hex);
   const decimalObjectOfHex = hextoDecimalColor(hex);
+  // console.log("DecimalToHex===>>", hextoDecimalColor(hex));
   const rgb = generateRgb(decimalObjectOfHex);
   // const changeBtn =
   document.querySelector("#suffle-btn");
@@ -179,6 +182,7 @@ function updateColorCodeToDom(color) {
   // const blueSlider =
   document.querySelector("#blue-range").value = color.blue;
 }
+// ----------******-----DOM related Function End-------***********---------
 
 /**
  --------Event Related Function------------
@@ -268,6 +272,7 @@ function hextoDecimalColor(hexColor) {
     const red = parseInt(hexColor.slice(0, 2), 16);
     const green = parseInt(hexColor.slice(2, 4), 16);
     const blue = parseInt(hexColor.slice(4, 6), 16);
+    // console.log("DECIMAL====>>", red, green, blue);
     return {
       red,
       green,
