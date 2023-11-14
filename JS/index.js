@@ -227,6 +227,7 @@ function handleHexInput(displayField) {
 }
 
 // Utils Related Function
+
 function generateDecimal() {
   const red = Math.floor(Math.random() * 255);
   const green = Math.floor(Math.random() * 255);

@@ -19,9 +19,7 @@ window.onload = () => {
 };
 
 function main() {
-  suffleBtn.addEventListener("click", shuffleColor);/*Random Color Button  */
-
-  
+  suffleBtn.addEventListener("click", shuffleColor); /*Random Color Button  */
 }
 
 // Event Handler Related Function
@@ -61,6 +59,24 @@ function getRGBColor({ red, green, blue }) {
   return `rgb(${red},${green},${blue})`;
 }
 
-function getHexColor({red,green,blue}) {
-  
+/**
+ *
+ * @param {object} param0
+ * @returns {string}
+ */
+function getHexColor({ red, green, blue }) {
+  function getTwoCode(value) {
+    const hex = value.toString(16);
+    return hex.length === 1 ? `0${hex}` : hex;
+  }
+  return `${getTwoCode(red)}${getTwoCode(green)}${getTwoCode(
+    blue
+  )}`.toUpperCase();
+}
+
+function hexToDecimal(hexColor) {}
+
+function isValidHex(color) {
+  if (color != 6) false;
+  return /[0-9A-Fa-f]{6}$/i.test(color);
 }
